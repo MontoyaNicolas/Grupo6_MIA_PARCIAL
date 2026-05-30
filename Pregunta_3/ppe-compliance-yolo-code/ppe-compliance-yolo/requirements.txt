@@ -1,0 +1,18 @@
+# Dependencias del proyecto. Instalar con:
+#   pip install -r requirements.txt
+#
+# El entrenamiento aprovecha GPU automáticamente si torch detecta CUDA. En CPU
+# funciona igual (más lento). Para una build de torch específica de tu CUDA,
+# consulta https://pytorch.org.
+
+ultralytics>=8.2.0      # framework de entrenamiento/evaluación YOLO
+torch>=2.1.0            # backend de deep learning
+torchvision>=0.16.0
+opencv-python>=4.8.0    # E/S de imagen y vídeo, dibujado de la demo
+numpy>=1.24.0
+pyyaml>=6.0             # lectura de configuraciones
+pillow>=9.5.0           # tamaño de imagen en la preparación de datos
+matplotlib>=3.7.0       # figuras del informe (make_figures.py)
+
+# Desarrollo / pruebas (opcional)
+pytest>=7.4.0

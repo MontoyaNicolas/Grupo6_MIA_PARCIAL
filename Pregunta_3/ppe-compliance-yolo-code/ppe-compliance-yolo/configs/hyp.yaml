@@ -1,0 +1,37 @@
+# Hiperparámetros de entrenamiento (consistentes con la Tabla de decisiones del
+# informe). Cada valor está comentado con su justificación. Se pasan a
+# Ultralytics mediante train.py.
+
+# --- Optimización ---
+optimizer: SGD        # SGD con momento generaliza algo mejor que Adam en detección
+lr0: 0.01             # tasa de aprendizaje inicial
+lrf: 0.01             # factor final (lr_final = lr0 * lrf), planificador coseno
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3.0    # calentamiento para estabilizar el arranque
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# --- Pesos de la pérdida (CIoU + DFL + BCE) ---
+box: 7.5              # localización (CIoU)
+cls: 0.5              # clasificación (BCE con objetivo suave)
+dfl: 1.5              # distribución de cajas (DFL)
+
+# --- Aumento de datos ---
+# El mosaico ayuda con escala y contexto, pero distorsiona la geometría fina;
+# por eso se DESACTIVA en las últimas épocas (close_mosaic) para afinar sobre
+# imágenes con composición realista. Clave para objetos pequeños y oclusión.
+hsv_h: 0.015          # jitter de tono (la alta visibilidad depende del color)
+hsv_s: 0.7            # saturación
+hsv_v: 0.4            # brillo (robustez a iluminación de obra)
+degrees: 0.0          # sin rotación (los EPP tienen orientación canónica)
+translate: 0.1
+scale: 0.5            # escala +/-50%: simula trabajadores cercanos y lejanos
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5           # volteo horizontal
+mosaic: 1.0           # mosaico activo durante el grueso del entrenamiento
+close_mosaic: 10      # desactiva mosaico en las últimas 10 épocas
+mixup: 0.1            # mezcla suave para regularizar el desbalance de clases
+copy_paste: 0.1       # pega instancias minoritarias (no conformes) en escenas

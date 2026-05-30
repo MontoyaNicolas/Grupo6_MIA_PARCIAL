@@ -1,0 +1,54 @@
+% neurips_2024.sty — reproducción del estilo de formato NeurIPS (versión final / camera-ready)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{neurips_2024}[2024/05/01 NeurIPS-like format]
+
+\RequirePackage{geometry}
+\geometry{letterpaper, textwidth=5.5in, textheight=9.0in,
+          top=1.0in, left=1.5in, headheight=12pt, headsep=20pt, footskip=24pt}
+
+% --- Fuentes: Times para texto/mates, Helvetica para títulos ---
+\RequirePackage{mathptmx}
+\RequirePackage[scaled=0.92]{helvet}
+\RequirePackage{microtype}
+
+% --- Espaciado de párrafo ---
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4.5pt plus 1.5pt minus 1pt}
+\renewcommand{\baselinestretch}{1.0}
+
+% --- Título ---
+\renewcommand{\@maketitle}{%
+  \newpage
+  \null
+  \vskip 0.3em%
+  \begin{center}%
+    {\fontsize{15}{18}\selectfont\bfseries \@title \par}%
+    \vskip 1.2em%
+    {\large \@author \par}%
+  \end{center}%
+  \vskip 1.0em%
+}
+
+% --- Abstract ---
+\renewenvironment{abstract}{%
+  \centerline{\large\bfseries Resumen}%
+  \vspace{0.4em}%
+  \begin{quote}\small}{%
+  \end{quote}}
+
+% --- Secciones (Helvetica negrita, estilo NeurIPS) ---
+\RequirePackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries\sffamily}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries\sffamily}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.6ex plus 0.6ex}{0.9ex}
+\titlespacing*{\subsection}{0pt}{1.2ex plus 0.5ex}{0.7ex}
+
+% --- Encabezado/pie ---
+\RequirePackage{fancyhdr}
+\pagestyle{plain}
+
+% --- Captions compactos ---
+\RequirePackage[font=small,labelfont=bf,labelsep=period]{caption}
+
+\endinput

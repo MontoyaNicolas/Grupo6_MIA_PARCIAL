@@ -1,0 +1,22 @@
+# Configuración del conjunto de datos unificado para Ultralytics.
+#
+# Esta plantilla la regenera automáticamente `data/prepare_datasets.py` dentro de
+# la carpeta de salida (datasets/ppe.yaml) con la ruta absoluta correcta. Se
+# incluye aquí como referencia y como configuración por defecto si los datos ya
+# están organizados en datasets/{images,labels}/{train,val,test}.
+
+path: ../datasets        # raíz del dataset (relativa a la carpeta code/)
+train: images/train
+val: images/val
+test: images/test
+
+nc: 5
+names: ['persona', 'casco', 'cabeza', 'chaleco', 'sin_chaleco']
+
+# Notas sobre la taxonomía:
+#   persona      -> cuerpo completo del trabajador
+#   casco        -> casco de seguridad puesto
+#   cabeza       -> cabeza descubierta (equivale a "sin casco")
+#   chaleco      -> chaleco de alta visibilidad puesto
+#   sin_chaleco  -> torso sin chaleco
+# El "cumplimiento" no es una clase; lo deriva el verificador por reglas.

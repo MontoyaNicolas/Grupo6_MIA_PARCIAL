@@ -1,0 +1,22 @@
+# Datos y pesos (no versionar)
+datasets_raw/
+datasets/
+runs/
+results/
+*.pt
+*.onnx
+ejemplos/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+*.egg-info/
+
+# Sistema / editores
+.DS_Store
+.idea/
+.vscode/
